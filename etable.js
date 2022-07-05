@@ -85,7 +85,7 @@ module.exports = function (RED) {
                         $scope.inited = false;
                         $scope.tabledata = [];
                         var tablediv;
-						var table;
+			var table;
                         var createTable = function(basediv, tabledata, columndata, options, outputs) {
                             var y = (columndata.length === 0) ? 25 : 32;
                             var opts1 = {
@@ -133,8 +133,7 @@ module.exports = function (RED) {
                                     $scope.tabledata = msg.payload;
                                     return;
                                 }
-                                //createTable(tablediv,msg.payload,columns,options,$scope.config.outputs);
-								table.replaceData(msg.payload) //trigger reload of ajax data from ajaxURL property
+				table.replaceData(msg.payload)
                             }
                         });
                     }
