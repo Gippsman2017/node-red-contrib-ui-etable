@@ -85,6 +85,7 @@ module.exports = function (RED) {
                         $scope.inited = false;
                         $scope.tabledata = [];
                         var tablediv;
+			var table;
                         var createTable = function(basediv, tabledata, columndata, options, outputs) {
                             var y = (columndata.length === 0) ? 25 : 32;
                             var opts1 = {
@@ -102,7 +103,7 @@ module.exports = function (RED) {
                                     $scope.send({topic:cell.getField(),callback:"cellEdited",payload:cell.getData(),options:opts});
                                 };
                             }
-                            var table = new Tabulator(basediv, opts);
+                            table = new Tabulator(basediv, opts);
                         };
                         $scope.init = function (config) {
                             $scope.config = config;
@@ -132,7 +133,7 @@ module.exports = function (RED) {
                                     $scope.tabledata = msg.payload;
                                     return;
                                 }
-                                createTable(tablediv,msg.payload,columns,options,$scope.config.outputs);
+				table.replaceData(msg.payload)
                             }
                         });
                     }
