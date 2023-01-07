@@ -101,7 +101,14 @@ module.exports = function (RED) {
                                 opts.cellEdited = function(cell) {
                                     $scope.send({topic:cell.getField(),callback:"cellEdited",payload:cell.getData(),options:opts});
                                 };
+                             }
+
+                            if( opts.movableRows){
+                                opts.rowMoved = function(row) {
+                                    $scope.send({callback:"rowMoved",payload:{row: row.getData(), position: row.getPosition()},options:opts});
+                                };
                             }
+
                             var table = new Tabulator(basediv, opts);
                         };
                         $scope.init = function (config) {

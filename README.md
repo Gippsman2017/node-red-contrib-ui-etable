@@ -19,6 +19,7 @@ Options can be
 
 {
     "movableColumns": true,
+    "movableRows": true,
     "resizableColumns": true,
     "selectable": 5,
     "responsiveLayout": "collapse",
@@ -32,13 +33,14 @@ Options can be
 
 Columns can be
 
-[		{title:"Name", field:"name", editor:"input"},
-		{title:"Task Progress", field:"progress", align:"left", formatter:"progress", editor:true},
-		{title:"Gender", field:"gender", width:95, editor:"select", editorParams:{values:["male", "female"]}},
-		{title:"Rating", field:"rating", formatter:"star", align:"center", width:100, editor:true},
-		{title:"Color", field:"col", width:130, editor:"input"},
-		{title:"Date Of Birth", field:"dob", width:130, sorter:"date", align:"center"},
-		{title:"Driver", field:"car", width:90,  align:"center", formatter:"tickCross", sorter:"boolean", editor:true}
+[		
+    {title:"Name", field:"name", editor:"input"},
+    {title:"Task Progress", field:"progress", align:"left", formatter:"progress", editor:true},
+    {title:"Gender", field:"gender", width:95, editor:"select", editorParams:{values:["male", "female"]}},
+    {title:"Rating", field:"rating", formatter:"star", align:"center", width:100, editor:true},
+    {title:"Color", field:"col", width:130, editor:"input"},
+    {title:"Date Of Birth", field:"dob", width:130, sorter:"date", align:"center"},
+    {title:"Driver", field:"car", width:90,  align:"center", formatter:"tickCross", sorter:"boolean", editor:true}
 ]
 
 Pass input data in msg.payload. Note that options and columns can also be passed in via msg. 
@@ -54,4 +56,5 @@ CallBacks handled are :
 
         If the cell has editor = true,  a message is sent with "callback : cellEdited" 
         If the cell has editor = false, a message is sent with "callback : cellClick"
+        If rows are movable, a message is sent with "callback : rowMoved"
 
